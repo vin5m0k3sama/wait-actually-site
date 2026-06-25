@@ -3,61 +3,250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>vin5m0k3sama</title>
-<meta name="description" content="vin5m0k3sama is the first-party automation tool that publishes the Wait, Actually channel's own original short videos to its own social accounts via the official platform APIs.">
+<title>vin5m0k3sama — Social Video Publishing Tool</title>
+<meta name="description" content="vin5m0k3sama is a professional social video publishing tool that automates the distribution of original short-form video content across multiple platforms via official APIs.">
 <style>
-  :root { --yellow:#FFD400; --black:#0A0A0A; --white:#F5F5F5; }
+  :root { --yellow:#FFD400; --black:#0A0A0A; --dark:#111; --white:#F5F5F5; --muted:#999; --border:#222; }
   * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:Arial,Helvetica,sans-serif; background:var(--black); color:var(--white);
-         line-height:1.6; }
-  header { background:var(--yellow); color:var(--black); text-align:center; padding:64px 24px; }
-  .logo { font-family:"Arial Black",Arial,sans-serif; font-weight:900; font-size:46px; line-height:1.05; }
-  header p { font-size:20px; font-weight:bold; margin-top:12px; }
-  main { max-width:720px; margin:0 auto; padding:48px 24px; }
-  h2 { color:var(--yellow); font-size:26px; margin-bottom:12px; }
-  section { margin-bottom:40px; }
+  body { font-family:Arial,Helvetica,sans-serif; background:var(--black); color:var(--white); line-height:1.7; }
+
+  nav { background:var(--dark); border-bottom:1px solid var(--border); padding:0 24px; display:flex; align-items:center; justify-content:space-between; height:60px; position:sticky; top:0; z-index:100; }
+  nav .brand { font-weight:900; font-size:20px; color:var(--yellow); text-decoration:none; }
+  nav ul { list-style:none; display:flex; gap:28px; }
+  nav ul a { color:var(--white); text-decoration:none; font-size:14px; }
+  nav ul a:hover { color:var(--yellow); }
+
+  .hero { background:var(--yellow); color:var(--black); text-align:center; padding:80px 24px; }
+  .hero h1 { font-family:"Arial Black",Arial,sans-serif; font-weight:900; font-size:52px; line-height:1.05; }
+  .hero p { font-size:20px; margin-top:16px; max-width:560px; margin-left:auto; margin-right:auto; }
+  .hero .badges { margin-top:28px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+  .badge { background:rgba(0,0,0,0.15); border-radius:999px; padding:6px 18px; font-size:13px; font-weight:bold; }
+
+  .container { max-width:860px; margin:0 auto; padding:64px 24px; }
+
+  h2 { color:var(--yellow); font-size:28px; margin-bottom:16px; }
+  h3 { font-size:18px; margin-bottom:8px; }
+  p { margin-bottom:14px; color:#ccc; }
   a { color:var(--yellow); }
-  .links a { display:inline-block; margin-right:20px; font-weight:bold; }
-  footer { border-top:1px solid #333; padding:24px; text-align:center; color:#888; font-size:14px; }
+
+  .section { margin-bottom:64px; }
+
+  .features { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:24px; margin-top:8px; }
+  .feature { background:var(--dark); border:1px solid var(--border); border-radius:8px; padding:28px 24px; }
+  .feature .icon { font-size:28px; margin-bottom:12px; }
+  .feature h3 { color:var(--white); }
+  .feature p { font-size:14px; margin:0; }
+
+  .steps { counter-reset:steps; display:grid; gap:20px; margin-top:8px; }
+  .step { display:flex; gap:20px; align-items:flex-start; background:var(--dark); border:1px solid var(--border); border-radius:8px; padding:24px; }
+  .step-num { background:var(--yellow); color:var(--black); font-weight:900; font-size:18px; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .step-body h3 { color:var(--white); margin-bottom:4px; }
+  .step-body p { font-size:14px; margin:0; }
+
+  .platforms { display:flex; gap:16px; flex-wrap:wrap; margin-top:8px; }
+  .platform { background:var(--dark); border:1px solid var(--border); border-radius:8px; padding:20px 24px; flex:1; min-width:160px; }
+  .platform h3 { color:var(--yellow); font-size:16px; margin-bottom:4px; }
+  .platform p { font-size:13px; margin:0; }
+
+  .faq { display:grid; gap:16px; margin-top:8px; }
+  .faq-item { background:var(--dark); border:1px solid var(--border); border-radius:8px; padding:24px; }
+  .faq-item h3 { color:var(--white); margin-bottom:8px; font-size:16px; }
+  .faq-item p { font-size:14px; margin:0; }
+
+  .watch-links { display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; }
+  .watch-link { background:var(--yellow); color:var(--black); padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:bold; font-size:15px; }
+  .watch-link:hover { opacity:0.85; }
+
+  .legal-links { display:flex; gap:20px; margin-top:8px; }
+  .legal-links a { font-weight:bold; }
+
+  footer { border-top:1px solid var(--border); padding:32px 24px; text-align:center; color:var(--muted); font-size:13px; }
+  footer a { color:var(--muted); }
 </style>
 </head>
 <body>
-  <header>
-    <h1 class="logo">vin5m0k3sama</h1>
-    <p>Automated uploader for the Wait, Actually channel.</p>
-  </header>
-  <main>
-    <section>
-      <h2>About</h2>
-      <p><strong>vin5m0k3sama</strong> is the first-party publishing tool behind the
-      <strong>Wait, Actually</strong> channel — a faceless short-form series that busts one common
-      myth a day with a surprising, science-backed fact in under 60 seconds. The uploader posts our
-      own original videos to our own accounts automatically via the official platform APIs.</p>
-    </section>
-    <section>
-      <h2>Where to watch</h2>
-      <p>New Shorts every day on
-      <a href="https://www.youtube.com/@waitactuallyfacts" target="_blank" rel="noopener">YouTube</a>
-      and TikTok. Comment a topic and we'll cover it next.</p>
-    </section>
-    <section>
-      <h2>The app</h2>
-      <p><strong>vin5m0k3sama</strong> uploads our own original short videos directly to
-      our own social accounts via the official platform APIs. It only ever posts our own content to
-      our own accounts and does not access other users' data.</p>
-    </section>
-    <section>
-      <h2>Legal</h2>
-      <p class="links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-      </p>
-    </section>
-    <section>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:a.arcicollarj@gmail.com">a.arcicollarj@gmail.com</a></p>
-    </section>
-  </main>
-  <footer>© 2026 vin5m0k3sama. All rights reserved.</footer>
+
+<nav>
+  <a class="brand" href="#">vin5m0k3sama</a>
+  <ul>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#how-it-works">How it works</a></li>
+    <li><a href="#platforms">Platforms</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <h1>vin5m0k3sama</h1>
+  <p>A professional publishing tool that distributes original short-form video content across social platforms automatically via official APIs.</p>
+  <div class="badges">
+    <span class="badge">YouTube</span>
+    <span class="badge">TikTok</span>
+    <span class="badge">Instagram</span>
+    <span class="badge">Facebook</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section" id="about">
+    <h2>About</h2>
+    <p><strong>vin5m0k3sama</strong> is the first-party content distribution tool behind the <strong>Wait, Actually</strong> channel — a short-form video series that covers surprising facts about food, brands, and everyday products in under 60 seconds.</p>
+    <p>The tool handles the full publishing pipeline: it takes a finished MP4 video and distributes it to the channel's own social accounts using each platform's official, approved API. No third-party services, no unofficial automation — every upload goes through the platform's own developer API with OAuth authorization.</p>
+    <p>vin5m0k3sama only ever acts on behalf of the account owner, posting the owner's own original content to the owner's own accounts. It does not collect data from other users, does not post on anyone else's behalf, and does not bypass any platform controls.</p>
+  </div>
+
+  <div class="section" id="features">
+    <h2>Features</h2>
+    <div class="features">
+      <div class="feature">
+        <div class="icon">⚡</div>
+        <h3>Multi-platform publishing</h3>
+        <p>Publishes the same video to YouTube, TikTok, Instagram, and Facebook in a single run via each platform's official API.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔐</div>
+        <h3>OAuth authorization</h3>
+        <p>Uses standard OAuth 2.0 flows for every platform. Access tokens are stored locally and never shared with third parties.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📋</div>
+        <h3>Per-platform captions</h3>
+        <p>Generates optimized captions and hashtags tailored to each platform's audience and algorithm.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔄</div>
+        <h3>Automated scheduling</h3>
+        <p>Runs on a configurable schedule, publishing new content at optimal times for the target audience.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🛡️</div>
+        <h3>First-party only</h3>
+        <p>Strictly limited to the channel owner's own accounts and content. No third-party access, no data collection.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">📊</div>
+        <h3>Error resilience</h3>
+        <p>Each platform upload is independent — if one fails, the others continue. All errors are logged for review.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="how-it-works">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Video ready</h3>
+          <p>An original short-form MP4 video (vertical 9:16, under 60 seconds) is prepared by the content creator.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Caption generation</h3>
+          <p>Platform-specific titles, descriptions, and hashtags are generated for YouTube, TikTok, Instagram, and Facebook.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>API upload</h3>
+          <p>The tool authenticates with each platform's official API using stored OAuth tokens and uploads the video with its metadata.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Published</h3>
+          <p>The video goes live on all connected platforms. Upload results and any errors are logged for the account owner to review.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="platforms">
+    <h2>Supported platforms</h2>
+    <div class="platforms">
+      <div class="platform">
+        <h3>YouTube</h3>
+        <p>Uploads via YouTube Data API v3. Supports Shorts format, custom titles, descriptions, tags, and privacy settings.</p>
+      </div>
+      <div class="platform">
+        <h3>TikTok</h3>
+        <p>Publishes via TikTok Content Posting API (Direct Post). Uses scope <code>video.publish</code> only.</p>
+      </div>
+      <div class="platform">
+        <h3>Instagram</h3>
+        <p>Posts Reels via Instagram Graph API with Instagram Login. Supports captions and hashtags optimized for Reels reach.</p>
+      </div>
+      <div class="platform">
+        <h3>Facebook</h3>
+        <p>Publishes to the Wait, Actually Facebook Page via Graph API. Videos under 60s are classified as Reels automatically.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="watch">
+    <h2>Watch the content</h2>
+    <p>All videos published by vin5m0k3sama are available on the <strong>Wait, Actually</strong> channel — surprising facts about food, brands, and products, posted daily.</p>
+    <div class="watch-links">
+      <a class="watch-link" href="https://www.youtube.com/@waitactuallyfacts" target="_blank" rel="noopener">YouTube</a>
+      <a class="watch-link" href="https://www.tiktok.com/@waitactuallyfacts" target="_blank" rel="noopener">TikTok</a>
+      <a class="watch-link" href="https://www.instagram.com/waitactuallyfacts" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+
+  <div class="section" id="faq">
+    <h2>FAQ</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>What data does vin5m0k3sama access?</h3>
+        <p>Only the minimum required to upload a video to the connected account: an OAuth access token and the account's allowed privacy settings. No personal data from other users is ever accessed or stored.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does it post on behalf of other users?</h3>
+        <p>No. vin5m0k3sama is a strictly first-party tool. It only posts content created by and belonging to the account owner, to the account owner's own accounts.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How are access tokens stored?</h3>
+        <p>OAuth tokens are stored locally on the operator's machine in local files. They are never transmitted to any server other than the platform that issued them (e.g. TikTok or YouTube).</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I revoke access?</h3>
+        <p>Yes. You can revoke the app's access at any time from each platform's security settings. For TikTok: Settings → Security → Manage app permissions. For Google: myaccount.google.com → Security → Third-party apps.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is this available to other users?</h3>
+        <p>No. vin5m0k3sama is a private, single-operator tool. It is not a public service and does not offer accounts or sign-ups to third parties.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="legal">
+    <h2>Legal</h2>
+    <p>Please review our policies before using or connecting to this application.</p>
+    <div class="legal-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <h2>Contact</h2>
+    <p>For questions about this application or its data practices, contact the operator directly.</p>
+    <p>Email: <a href="mailto:a.arcicollarj@gmail.com">a.arcicollarj@gmail.com</a></p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 vin5m0k3sama. All rights reserved. &nbsp;|&nbsp;
+  <a href="privacy.html">Privacy Policy</a> &nbsp;|&nbsp;
+  <a href="terms.html">Terms of Service</a>
+</footer>
+
 </body>
 </html>
